@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{subfiles}
+\usepackage[margin=1in, a4paper]{geometry}
+
+%%% Bibliography
+\usepackage[hidelinks]{hyperref}
+
+\usepackage[backend=biber,style=apa]{biblatex}
+\setlength{\bibitemsep}{\baselineskip} 
+\addbibresource{ref.bib}
+\nocite{*}
+\defbibenvironment{bibliography}
+  {\begin{enumerate}}
+  {\end{enumerate}}
+  {\item}
+
+%%% PDF as pages (useful for front cover)
+\usepackage{pdfpages}
+
+%%% My personal preference in style
+\usepackage{indentfirst}
+\usepackage{float}
+
+\begin{document}
+% Cover
+\includepdf[pages=1, fitpaper=true]{cover-page.pdf} 
+
+% Table of contents
+\tableofcontents
+\newpage
+
+%---------------- MAIN ----------------
+\subfile{subfiles/subfile.tex}
+
+
+
+
+%--------------------------------------
+
+% References
+\printbibliography[heading=bibintoc]
+
+\end{document}
+

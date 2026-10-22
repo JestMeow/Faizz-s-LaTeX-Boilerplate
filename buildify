@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+cd src
+
+mkdir -p ../out
+
+pdflatex -output-directory=../out main.tex
+
+### For stuff related to bibliography/biber
+if [[ $1 == "b" ]]; then
+    biber --input-directory=../out --output-directory=../out main
+    pdflatex -output-directory=../out main.tex
+    pdflatex -output-directory=../out main.tex
+fi
+
